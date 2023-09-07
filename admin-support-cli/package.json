@@ -1,0 +1,70 @@
+{
+  "name": "admin-support-issueops-actions",
+  "version": "1.0.0",
+  "description": "Help support teams to handle requests providing temporary admin access",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build src/action.js -o dist",
+    "lint": "standard --fix",
+    "prebuild": "rimraf dist",
+    "prepare": "cd .. && husky install ./.github/husky",
+    "start": "node src/cli.js",
+    "test": "jest --coverage && standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ActionsDesk/admin-support-issueops-actions"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "author": "GitHub",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ActionsDesk/admin-support-issueops-actions"
+  },
+  "homepage": "https://github.com/ActionsDesk/admin-support-issueops-actions",
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "@actions/github": "^5.1.1",
+    "@octokit/graphql": "^5.0.1",
+    "@octokit/plugin-retry": "^3.0.9",
+    "@octokit/plugin-throttling": "^4.3.0",
+    "@octokit/rest": "^19.0.4",
+    "@vercel/ncc": "^0.34.0",
+    "commander": "^9.4.0",
+    "node-notifier": ">=10.0.1",
+    "validate.js": "^0.13.1",
+    "yaml": "^2.1.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.3",
+    "nock": "^13.2.9",
+    "rimraf": "^3.0.2",
+    "standard": "^17.0.0"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ],
+    "ignore": [
+      "dist/"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/?(*.)+(spec|test).[j]s?(x)"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./.github/husky/pre-commit",
+      "pre-push": "./.github/husky/pre-push"
+    }
+  }
+}
